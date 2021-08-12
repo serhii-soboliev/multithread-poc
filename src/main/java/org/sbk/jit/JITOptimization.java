@@ -4,10 +4,10 @@ public class JITOptimization {
 
     private static boolean enabled = true;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         new Thread(JITOptimization::process).start();
         sleepMillSeconds(1000);
-        new Thread(JITOptimization::disableProcessing).start();
+        disableProcessing();
     }
 
     private static void disableProcessing() {
