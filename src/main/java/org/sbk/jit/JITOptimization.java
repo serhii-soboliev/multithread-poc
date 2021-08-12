@@ -2,24 +2,25 @@ package org.sbk.jit;
 
 public class JITOptimization {
 
-    private static boolean enabled = true;
+    private boolean enabled = true;
 
     public static void main(String[] args) throws InterruptedException {
-        new Thread(JITOptimization::process).start();
+        var jitOptimization = new JITOptimization();
+        new Thread(jitOptimization::process).start();
         Thread.sleep(5);
-        new Thread(JITOptimization::disableProcessing).start();
+        new Thread(jitOptimization::disableProcessing).start();
     }
 
-    private static void disableProcessing() {
+    private void disableProcessing() {
         enabled = false;
         System.out.println("Processing disable called");
     }
 
-    private static boolean isEnabled() {
+    private boolean isEnabled() {
         return enabled;
     }
 
-    private static void process() {
+    private void process() {
         boolean printed = false;
         while (isEnabled()) {
             if(!printed) {
