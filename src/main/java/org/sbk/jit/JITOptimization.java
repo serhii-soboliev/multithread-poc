@@ -6,7 +6,7 @@ public class JITOptimization {
 
     public static void main(String[] args) throws InterruptedException {
         new Thread(JITOptimization::process).start();
-        Thread.sleep(1000);
+        sleepMillSeconds(1000);
         new Thread(JITOptimization::disableProcessing).start();
     }
 
@@ -19,7 +19,7 @@ public class JITOptimization {
         return enabled;
     }
 
-    private static void process() {
+    private static void process()  {
         boolean printed = false;
         while (isEnabled()) {
             if(!printed) {
@@ -30,14 +30,11 @@ public class JITOptimization {
         System.err.println("Processing finished");
     }
 
-    private static void process2() {
-        boolean printed = isEnabled();
-        while (printed) {
-            if(!printed) {
-                System.err.println("Processing started");
-                printed = true;
-            }
+    private static void sleepMillSeconds(int mills) {
+        try {
+            Thread.sleep(mills);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        System.err.println("Processing finished");
     }
 }
