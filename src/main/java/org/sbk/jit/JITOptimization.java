@@ -6,13 +6,13 @@ public class JITOptimization {
 
     public static void main(String[] args) throws InterruptedException {
         new Thread(JITOptimization::process).start();
-        Thread.sleep(2);
+        Thread.sleep(1000);
         new Thread(JITOptimization::disableProcessing).start();
     }
 
     private static void disableProcessing() {
         enabled = false;
-        System.out.println("Processing disable called");
+        System.err.println("Processing disable called");
     }
 
     private static boolean isEnabled() {
@@ -23,21 +23,21 @@ public class JITOptimization {
         boolean printed = false;
         while (isEnabled()) {
             if(!printed) {
-                System.out.println("Processing started");
+                System.err.println("Processing started");
                 printed = true;
             }
         }
-        System.out.println("Processing finished");
+        System.err.println("Processing finished");
     }
 
     private static void process2() {
         boolean printed = isEnabled();
         while (printed) {
             if(!printed) {
-                System.out.println("Processing started");
+                System.err.println("Processing started");
                 printed = true;
             }
         }
-        System.out.println("Processing finished");
+        System.err.println("Processing finished");
     }
 }
