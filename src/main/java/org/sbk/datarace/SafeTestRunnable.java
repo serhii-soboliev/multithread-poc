@@ -6,9 +6,9 @@ public class SafeTestRunnable implements Runnable {
 
     @Override
     public void run() {
-        for(int i=0; i<100000; i++) {
+        for(int i=0; i<1_000_000; i++) {
             synchronized (this) {
-                count += 1;
+                this.count++;
             }
         }
         System.out.printf("Thread=%s, count=%s%n", Thread.currentThread().getName(), count);
