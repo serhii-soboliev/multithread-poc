@@ -4,9 +4,11 @@ public class JITOptimization {
 
     private static boolean enabled = true;
 
+    private static int milliseconds = 5;
+
     public static void main(String[] args) {
         new Thread(JITOptimization::process).start();
-        sleepMillSeconds(1000);
+        sleepMillSeconds(milliseconds);
         disableProcessing();
     }
 
