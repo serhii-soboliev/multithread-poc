@@ -2,6 +2,7 @@ package org.sbk.datarace.counters.naive;
 
 import org.openjdk.jcstress.annotations.*;
 import org.openjdk.jcstress.infra.results.II_Result;
+import org.openjdk.jcstress.infra.results.I_Result;
 
 @JCStressTest
 @State
@@ -27,5 +28,6 @@ public class NaiveCounterTest {
         }
         result.r2 = counter.get();
     }
+
 }
 

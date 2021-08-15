@@ -11,23 +11,22 @@ public class SyncCounterTest {
     private static final int ITERATION_NUMBER = 100;
 
     @Actor
-    void actor1(I_Result result) {
+    void actor1() {
        for(int i=0; i<ITERATION_NUMBER;i++) {
            counter.incrementAndGet();
-       }
-       if(counter.get() > result.r1) {
-           result.r1 = counter.get();
        }
     }
 
     @Actor
-    void actor2(I_Result result) {
+    void actor2() {
         for(int i=0; i<ITERATION_NUMBER;i++) {
             counter.incrementAndGet();
         }
-        if(counter.get() > result.r1) {
-            result.r1 = counter.get();
-        }
+    }
+
+    @Arbiter
+    void arbiter(I_Result result) {
+        result.r1 = counter.get();
     }
 }
 
