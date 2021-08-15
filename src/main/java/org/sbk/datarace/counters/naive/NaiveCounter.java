@@ -1,6 +1,6 @@
-package org.sbk.datarace.counter;
+package org.sbk.datarace.counters.naive;
 
-public class Counter {
+public class NaiveCounter {
     private int counter = 0;
 
     public int incrementAndGet() {
